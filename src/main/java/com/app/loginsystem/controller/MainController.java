@@ -75,9 +75,12 @@ public class MainController {
 	@PostMapping("/signup")
 	public String signup(@ModelAttribute("signuprequest")CreateUserRequest signUpRequest,Model model) {
 		boolean result=userService.createUser(signUpRequest);
-		if(!result) {
+		if(!result && userService.getFlag()==1) {
 			model.addAttribute("error", "Username or email already exists");
 			return "/signup";
+		}else if(!result && userService.getFlag()==0){
+			return "/signup";
+			
 		}else {
 			return "redirect:/login";		
 		}

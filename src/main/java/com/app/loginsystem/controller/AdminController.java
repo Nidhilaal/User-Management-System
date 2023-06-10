@@ -50,8 +50,7 @@ public class AdminController {
 			return "/createuser";
 		}else if(!result && userService.getFlag()==0){
 			return "/createuser";	
-		}
-		else {
+		}else {
 			return "redirect:/adminpanel";			
 		}	
 	}
